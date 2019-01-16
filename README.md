@@ -13,4 +13,4 @@ Swipe moneybutton to simulate purchasing product.
 > Use small amounts! Payout is to author unless you modify the html!
 
 When quantity reaches 0 all client browsers will show sold out.  
-In Produce Admin page increase the quantity and price, click submit to update all the active money buttons.
+In Product Admin page increase the quantity and price, click submit to update all the active money buttons.
