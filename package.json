@@ -1,0 +1,27 @@
+{
+  "name": "moneybutton-broadcast",
+  "version": "1.0.0",
+  "description": "Dynamically update money button configuration from a server",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "sse": "0.0.8",
+    "sse-channel": "^3.1.1",
+    "sse-express": "^1.0.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dfoderick/moneybutton-broadcast.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dfoderick/moneybutton-broadcast/issues"
+  },
+  "homepage": "https://github.com/dfoderick/moneybutton-broadcast#readme"
+}

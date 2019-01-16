@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Moneybutton Broadcast</title>
+  </head>
+  <body>
+        <div class="container">
+    <h1>Product Admin</h1>
+    <h5>Edit product. Changes will be update moneybutton for all users currently viewing your site.</h5>
+
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input type="number" class="form-control" id="price" placeholder="Enter price">
+        </div>
+        <div class="form-group">
+          <label for="quantityOnHand">Quantity on Hand</label>
+          <input type="number" class="form-control" id="quantityOnHand" placeholder="Quantity On Hand">
+        </div>
+        <button id="refresh-button" class="btn">Refresh</button>
+        <button id="submit-button" type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+
+        $("#submit-button").click( function(){
+            let payload = {price: $("#price").val(), quantityOnHand: $("#quantityOnHand").val()}
+            console.log(payload)
+            fetch('http://localhost:3000/update', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          }).then(function(response) {
+              return response.json()
+          }).then(function(data) {
+              console.log(data)
+          })
+        })
+
+        $("#refresh-button").click( function(){
+          getCurrentProduct()
+        })
+
+    })
+
+    getCurrentProduct()
+
+    function getCurrentProduct() {
+            fetch('http://localhost:3000/config')
+            .then(function(response) {
+                response.json().then( function (config) {
+                console.log(config)
+                if (config.amount >= 0) {
+                    $("#price").val(config.amount)
+                }
+                if (config.quantityOnHand >= 0) {
+                    $("#quantityOnHand").val(config.quantityOnHand)
+                } else {
+                    $("#quantityOnHand").val(0)
+                }
+            }).catch(console.error)
+            })
+        }
+
+    </script>
+  </body>
+</html>
