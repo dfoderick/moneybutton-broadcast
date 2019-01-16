@@ -1,6 +1,8 @@
 # moneybutton-broadcast
 Update moneybutton, price and quantity in stock on all browsers who are viewing your site.  Useful for high traffic sites with volatile product availability or pricing.
 
+## Demo Video
+[Watch here](https://dfoderick.tinytake.com/sf/MzIzMjE4OF85Njg1NDY4)
 ## Run Demo
 Start the server.
 ```
